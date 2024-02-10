@@ -3,8 +3,9 @@
 # Manage main UI, use turbo stream to update summarizer results
 class BookSummaryController < ApplicationController
   # TODO: make prompts changeable, use a choice list to manage prompts created by a scaffold
+  # removed non-fiction
   COACH_SIMPLIFIED_PROMPT = <<-PROMPT
-  I want you to act as a Life Coach. Please summarize the following non-fiction book,
+  I want you to act as a Life Coach. Please summarize the following book,
   simplify the core principals in a way a child would be able to understand.
   Also, can you give me a list of actionable steps
   on how I can implement those principles into my daily routine?
