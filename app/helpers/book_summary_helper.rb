@@ -14,11 +14,8 @@ module BookSummaryHelper
   end
 
   def summarize_book_with_ai(prompt, book_title, model_name, temperature, &chunker)
-    Rails.logger.debug("openapi_key: #{openapi_key}")
-
     client = OpenAI::Client.new(access_token: openapi_key)
-    summary = ''
-    response = client.chat(
+    client.chat(
       parameters: {
         model: model_name, # Required.
         messages: [
@@ -27,8 +24,6 @@ module BookSummaryHelper
         temperature:,
         stream: chunker
       })
-    rate_limits_status(response)
-    summary
   rescue StandardError => e
     raise "Book summary for #{book_title} failed with OpenAI error: #{e.message}"
   end
