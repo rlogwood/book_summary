@@ -39,3 +39,6 @@
 - Add devise user and make the summary chucking session specific
 - Add BookSummary model and save results for later review and sharing
 - Allow Prompts to be created, saved and reused
+
+### _App screen shot as of Feb 10, 2024_
+![Book Summarizer](docs/BookSummarizerScreenShot.png)
