@@ -1,0 +1,5 @@
+<% if @messages.size > 0 %>
+  <%= turbo_stream.replace("summary", partial: 'params_error', locals: {messages: @messages}) %>
+<% else %>
+  <%= turbo_stream.replace("summary", partial: 'book_summary', locals: {book_summary: @summary, model: @chatgpt_model, temperature: @temperature}) %>
+<% end %>

@@ -1,0 +1,2 @@
+class ChatGptModel < ApplicationRecord
+end

@@ -1,0 +1,34 @@
+/* Application styles for ChatGPT returned HTML */
+
+.chatgpt p {
+    padding: 10px;
+}
+
+.chatgpt h4 {
+    font-size: large;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.chatgpt h3 {
+    font-size: larger;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.chatgpt h2 {
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.chatgpt h1 {
+    font-size: xx-large;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.chatgpt li {
+    padding: 5px;
+    list-style: disc;
+}

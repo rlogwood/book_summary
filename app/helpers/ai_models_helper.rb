@@ -1,0 +1,2 @@
+module AiModelsHelper
+end
