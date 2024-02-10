@@ -68,20 +68,16 @@ class BookSummaryController < ApplicationController
 
   # check for valid params and update UI to show errors if any found
   def validate_book_params
-    if @book_title.blank?
-      Rails.logger.error('ERROR: Book title is blank!')
-      @messages = ['Book title cannot be blank, please type in a book title you want summarized']
-      update_summary_stream
+    return true unless @book_title.blank?
 
-      Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
-                                                 target: 'summary',
-                                                 partial: 'book_summary/params_error',
-                                                 locals: {messages: @messages})
+    Rails.logger.error('ERROR: Book title is blank!')
+    @messages = ['Book title cannot be blank, please type in a book title you want summarized']
 
-      return false # parameters are invalid
-    end
-
-    true
+    Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
+                                               target: 'summary',
+                                               partial: 'book_summary/params_error',
+                                               locals: {messages: @messages})
+    false
   end
 
 end
