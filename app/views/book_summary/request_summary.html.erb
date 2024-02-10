@@ -9,9 +9,9 @@
     <div class="my-5 flex ">
       <%= form.label :title, class: "rounded-l-md bg-gray-700 text-gray-100 pr-4 px-3 py-2 mt-2" %>
       <%= form.text_field :title, placeholder: "Book Title to Summarize",
-                          class: ["block shadow-xl rounded-r-md border border-gray-200 outline-none",
+                          class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
                                   "px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
-                                  "transition ease-in-out duration-500"].join(' ')%>
+                                  "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' ')%>
     </div>
 
 
@@ -22,18 +22,18 @@
                                    #focus: "mousedown->chatgpt-model#handleMousedown",
                                    action: "mousedown->chatgpt-model#handleMousedown change->chatgpt-model#handleChange"
                                  },
-                                 class: ["block shadow-xl rounded-r-md border border-gray-200 outline-none",
+                                 class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
                                          " px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
-                                          "transition ease-in-out duration-500"].join(' '),
+                                          "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' '),
                                  id: "model_name" %>
     </div>
 
     <div class="my-5 flex ">
       <%= form.label :temp, class: "rounded-l-md bg-gray-700 text-gray-100 pr-4 px-3 py-2 mt-2" %>
       <%= form.number_field :temp, min: 0, max: 1, step: 0.1, value: 0,
-                            class: ["block shadow-xl rounded-r-md border border-gray-200 outline-none",
+                            class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
                                     "px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
-                                    "transition ease-in-out duration-500"].join(' ') %>
+                                    "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' ') %>
     </div>
 
 
