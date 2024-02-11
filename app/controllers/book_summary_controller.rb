@@ -28,7 +28,8 @@ class BookSummaryController < ApplicationController
     end
 
     # TODO: save summaries to DB for later retrieval and sharing
-    refresh_request_form
+    # TODO: clean up refresh_request_form
+    ### refresh_request_form - no longer needed, handled at javascript level
   rescue StandardError => e
     @summary = e.message
   end
@@ -79,7 +80,7 @@ class BookSummaryController < ApplicationController
     Rails.logger.error('ERROR: Book title is blank!')
     @messages = ['Book title cannot be blank, please type in a book title you want summarized']
 
-    refresh_request_form
+    ### refresh_request_form - no longer needed, handled at javascript level
     Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
                                                target: 'summary',
                                                partial: 'book_summary/params_error',
