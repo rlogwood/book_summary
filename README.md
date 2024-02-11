@@ -35,8 +35,7 @@
 6. visit http://127.0.0.1:3000/ 
 
 ## TODOS
-- Currently using global TurboStream for chucking summary
-- Add devise user and make the summary chucking session specific
+- Consider using devise to make user specific defaults
 - Add BookSummary model and save results for later review and sharing
 - Allow Prompts to be created, saved and reused
 
