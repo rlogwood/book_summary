@@ -1,0 +1,54 @@
+<div id="request_form">
+<%= form_with url: summarize_path, scope: "book", class: "mb-5", data: { controller: "form", form_target: "summary_form" } do |form| %>
+  <div class="md:flex justify-between md:space-x-4">
+    <div class="my-5 flex ">
+      <%= form.label :title, class: "rounded-l-md bg-gray-700 text-gray-100 pr-4 px-3 py-2 mt-2" %>
+      <%= form.text_field :title, placeholder: "Book Title to Summarize",
+                          class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
+                                  "px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
+                                  "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' ')%>
+    </div>
+
+
+    <div data-controller="chatgpt-model" data-action="mousedown->chatgpt-model#handleFocus" class="my-5 flex">
+      <%= form.label :model, class: "rounded-l-md bg-gray-700 text-gray-100 pr-4 px-3 py-2 mt-2" %>
+      <%= form.collection_select :model, ChatGptModel.all, :id, :name, {},
+                                 data: {
+                                   #focus: "mousedown->chatgpt-model#handleMousedown",
+                                   action: "mousedown->chatgpt-model#handleMousedown change->chatgpt-model#handleChange"
+                                 },
+                                 class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
+                                         "px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
+                                         "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' '),
+                                 id: "model_name" %>
+    </div>
+
+    <div class="my-5 flex ">
+      <%= form.label :temp, class: "rounded-l-md bg-gray-700 text-gray-100 pr-4 px-3 py-2 mt-2" %>
+      <%= form.number_field :temp, min: 0, max: 1, step: 0.1, value: 0,
+                            class: ["block shadow-xl rounded-r-md border-2 border-gray-200 outline-none",
+                                    "px-3 py-2 mt-2 hover:border-2 hover:border-yellow-500",
+                                    "hover:bg-yellow-50 transition ease-in-out duration-500"].join(' ') %>
+    </div>
+
+
+  </div>
+
+  <div class="inline flex">
+    <%= form.submit "Summarize",
+                    class: ['rounded-lg py-3 px-5 bg-violet-500 hover:bg-violet-400 text-violet-200 hover:text-violet-900',
+                            'hover:font-bold inline-block font-bold cursor-pointer border border-purple-500'].join(' '),
+                    data: { action: "click->form#freeze", form_target: "submit" }%>
+
+
+    <button data-form-target='processing' type="button" class="hidden inline-flex items-center py-3 px-5 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150 cursor-not-allowed" disabled="">
+      <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+      Processing...
+    </button>
+
+  </div>
+<% end %>
+</div>

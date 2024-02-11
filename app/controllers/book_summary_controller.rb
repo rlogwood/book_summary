@@ -28,7 +28,7 @@ class BookSummaryController < ApplicationController
     end
 
     # TODO: save summaries to DB for later retrieval and sharing
-
+    refresh_request_form
   rescue StandardError => e
     @summary = e.message
   end
@@ -53,8 +53,14 @@ class BookSummaryController < ApplicationController
     # TODO: switch from global stream to session based stream, add devise user managment
     Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
                                                target: 'summary', partial: 'book_summary/book_summary',
-                                               locals: {book_summary: @summary, model: @chatgpt_model,
-                                                        temperature: @temperature })
+                                               locals: {book_title: @book_title, book_summary:
+                                                 @summary, model: @chatgpt_model, temperature: @temperature })
+  end
+
+  # restore summary request form
+  def refresh_request_form
+    Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
+                                               target: 'request_form', partial: 'book_summary/summary_request_form')
   end
 
   # pull out user parameters
@@ -73,10 +79,12 @@ class BookSummaryController < ApplicationController
     Rails.logger.error('ERROR: Book title is blank!')
     @messages = ['Book title cannot be blank, please type in a book title you want summarized']
 
+    refresh_request_form
     Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
                                                target: 'summary',
                                                partial: 'book_summary/params_error',
                                                locals: {messages: @messages})
+
     false
   end
 
