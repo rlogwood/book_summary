@@ -5,6 +5,6 @@
 
 <%= render partial: "book_summary/summary_request_form" %>
 
-<%= turbo_stream_from "book_summarizer" %>
+<%= turbo_stream_from session_turbo_stream_id %>
 
 <div id="summary"></div>

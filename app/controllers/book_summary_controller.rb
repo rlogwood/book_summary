@@ -52,7 +52,7 @@ class BookSummaryController < ApplicationController
   # update UI with current value of chucking or finalized summary
   def update_summary_stream
     # TODO: switch from global stream to session based stream, add devise user managment
-    Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
+    Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'summary', partial: 'book_summary/book_summary',
                                                locals: {book_title: @book_title, book_summary:
                                                  @summary, model: @chatgpt_model, temperature: @temperature })
@@ -60,7 +60,7 @@ class BookSummaryController < ApplicationController
 
   # restore summary request form
   def refresh_request_form
-    Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
+    Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'request_form', partial: 'book_summary/summary_request_form')
   end
 
@@ -81,7 +81,7 @@ class BookSummaryController < ApplicationController
     @messages = ['Book title cannot be blank, please type in a book title you want summarized']
 
     ### refresh_request_form - no longer needed, handled at javascript level
-    Turbo::StreamsChannel.broadcast_replace_to('book_summarizer',
+    Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'summary',
                                                partial: 'book_summary/params_error',
                                                locals: {messages: @messages})
