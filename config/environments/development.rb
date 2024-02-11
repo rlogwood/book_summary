@@ -71,4 +71,15 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Ensure you have defined default url options in your environments files. Here
+  # is an example of default_url_options appropriate for a development environment
+  # in config/environments/development.rb:
+  #
+  #   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  #
+  # In production, :host should be set to the actual host of your application.
+  #
+  #   * Required for all applications. *
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
