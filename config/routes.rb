@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'chatgpt_models' => 'ai_models#chatgpt_models'
   get 'request_summary' => 'book_summary#request_summary'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
