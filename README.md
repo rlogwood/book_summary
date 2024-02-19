@@ -31,7 +31,11 @@
   see `views/layout/application.html.erb` and `app/frontend/components/notification_component.rb`
 
 
-  
+- Tailwind CSS dynamic classes and Rails.
+The content settings in `config/tailwind.config.js` determine which file the tailwind build process
+will search for classes. In the event that you have dynamically set classes through (perhaps in a 
+configuration process), it may be necessary to explicitly list those classes in a file. For example, 
+`config/tailwind_dynamic_classes.txt`, where each class is listed on a line by itself.
 
 * * *
 
