@@ -14,6 +14,25 @@
   > sudo service redis-server restart
   > ```
 
+- To get PropShaft to work with the view_component gem the following solution was followed:
+  https://github.com/rails/propshaft/issues/87#issuecomment-1127234248
+
+- view components were generated using the following command: 
+  `bin/rails g component (name) [(attr1)...] --stimulus`
+  > Using the `--sidecar` options makes the controller names too long
+   
+- In the case of the `nav` view components the generated code was modified to add `Nav::` and `nav--` as needed.
+
+- The modern flash messages where adopted almost verbatim from 
+  [Modern Rails flash messages (part 1): ViewComponent, Stimulus & Tailwind CSS](
+   https://dev.to/citronak/modern-rails-flash-messages-part-1-viewcomponent-stimulus-tailwind-css-3alm). 
+  The code was modified as needed to make it work with current versions of Rails, Turbo and Stimulus.
+  Font Awesome usage is currently commented out in favor character icons, but may be added 
+  see `views/layout/application.html.erb` and `app/frontend/components/notification_component.rb`
+
+
+  
+
 * * *
 
 ## Running the app

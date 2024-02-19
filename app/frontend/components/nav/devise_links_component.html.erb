@@ -1,0 +1,15 @@
+
+<% if @as_list_elements %>
+  <li>
+<% end %>
+
+<% if helpers.user_signed_in? %>
+  <%= link_to @logout_text, destroy_user_session_path, class: @style, data: { turbo_method: :delete } %>
+<% else %>
+  <%= link_to @login_text, new_user_session_path, class: @style %>
+<% end %>
+
+<% if @as_list_elements %>
+  </li>
+<% end %>
+

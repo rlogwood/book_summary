@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+#echo "Building Tailwind safelist dynamic class file"
+#ruby ./utility/create_tailwind_safelist.rb
+
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
   gem install foreman
