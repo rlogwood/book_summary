@@ -1,0 +1,26 @@
+<!-- nav bar -->
+<div data-controller="nav--bar-component" class="fixed top-0 left-0 bg-gray-500 w-full border-b border-gray-600">
+  <nav class="px-4 flex mx-auto justify-between items-center max-w-screen-lg">
+    <%= render partial: "nav/icon", locals: {width: 100}%>
+    <%= render partial: "nav/hamburger_menu_button" %>
+
+    <ul class="hidden top-1/2 left-1/2 md:flex md:mx-auto md:items-center md:w-auto md:space-x-6"> <%# links %>
+      <%= render partial: "nav/nav_links",
+                 locals: {nav_links: @nav_links, devise_style: @devise_style, show_devise: @show_devise} %>
+    </ul> <%# links %>
+  </nav>
+
+  <div data-nav--bar-component-target="mobileMenu" class="hidden relative"> <%# mobile menu %>
+    <nav class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-gray-700 border-r overflow-y-auto">
+      <div class="flex items-center mb-2">
+        <%= render partial: "nav/icon", locals: {width: 50}%>
+        <%= render partial: "nav/close_button" %>
+      </div>
+
+      <ul class="top-1/2 left-1/2 bg-gray-700 space-y-4"> <%# links %>
+        <%= render partial: "nav/nav_links",
+                   locals: {nav_links: @nav_links, devise_style: @devise_style, show_devise: @show_devise} %>
+      </ul> <%# links %>
+    </nav>
+  </div> <%# /mobile menu %>
+</div>

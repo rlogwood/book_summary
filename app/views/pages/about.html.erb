@@ -1,0 +1,22 @@
+<div class="p-10">
+  <h1 class="font-bold text-2xl">OpenAI ChatGPT Book Summarizer</h1>
+
+  <div class="px-10 py-5">
+    This project is uses Rails 7, Import Maps, Tailwind CSS, PropShaft and SQLite
+    to demonstrate how to call OpenAI's API for ChatGPT via the <span class="font-semibold">ruby-openai</span> gem.
+    It also uses the <span class="font-semibold">view_component</span> gem for some UI components see
+    <%= render Nav::LinkComponent.new(text: "viewcomponent.org", path: "https://viewcomponent.org/",
+                                 inactive_style: "hover:bg-gray-100 hover:text-blue-600 rounded-md px-3 py-2 text-md font-medium text-white",
+                                 active_style: "bg-yellow-200  text-gray-900 rounded-md px-3 py-2 text-md font-medium",
+                                 target: '_blank') %>
+  </div>
+
+  <div class="px-10 py-5">
+    Join us the 2nd Wednesday every month for a Ruby meetup at
+    <%= render Nav::LinkComponent.new(text: "NYC.rb @ meetup.com", path: "https://www.meetup.com/NYC-rb/",
+                                 inactive_style: "hover:bg-gray-100 hover:text-blue-600 rounded-md px-3 py-2 text-md font-medium text-white",
+                                 active_style: "bg-yellow-200  text-gray-900 rounded-md px-3 py-2 text-md font-medium",
+                                 target: '_blank') %>
+
+  </div>
+</div>

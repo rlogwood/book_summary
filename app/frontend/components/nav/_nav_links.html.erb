@@ -1,0 +1,10 @@
+<% nav_links.each do |link| %>
+  <li>
+    <%= render(link) %>
+  </li>
+<% end %>
+
+<% if show_devise %>
+  <%= render Nav::DeviseLinksComponent.new(login_text: "Login", logout_text: "Logout", edit_text: "Edit",
+                                           style: devise_style, as_list_elements: true) %>
+<% end %>

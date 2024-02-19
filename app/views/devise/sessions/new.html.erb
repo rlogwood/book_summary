@@ -1,15 +1,19 @@
-<h2>Log in</h2>
+<div class="p-10">
+<h2 class="text-4xl">Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class="my-5 flex ">
+      <%= f.label :email, class: "field-label" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-text" %>
+    </div> <%# /email %>
+
+    <div class="my-5 flex ">
+      <%= f.label :password, class: "field-label" %>
+      <%= f.password_field :password, autocomplete: "current-password",
+                           class: "field-text" %>
+
+    </div> <%# /password %>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
@@ -19,11 +23,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Login",
-                    class: ['rounded-lg py-3 px-5 bg-violet-500 hover:bg-violet-400 text-violet-200 hover:text-violet-900',
-                            'hover:font-bold inline-block font-bold cursor-pointer border border-purple-500'].join(' '),
+    <%= f.submit "Login", class: "form-button",
                     data: { action: "click->form#submit_pressed", form_target: "submit" }%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

@@ -73,3 +73,5 @@ group :test do
 end
 
 gem "ruby-openai", "~> 6.3"
+
+gem "view_component", "~> 3.10"

@@ -2,6 +2,7 @@
 
 # Manage main UI, use turbo stream to update summarizer results
 class BookSummaryController < ApplicationController
+  before_action :authenticate_user!
   # TODO: make prompts changeable, use a choice list to manage prompts created by a scaffold
   # removed non-fiction
   COACH_SIMPLIFIED_PROMPT = <<-PROMPT
@@ -13,7 +14,8 @@ class BookSummaryController < ApplicationController
   PROMPT
 
   # entry point, show ui
-  def request_summary; end
+  def request_summary
+  end
 
   # call back for summarize button
   def summarize
@@ -51,7 +53,6 @@ class BookSummaryController < ApplicationController
 
   # update UI with current value of chucking or finalized summary
   def update_summary_stream
-    # TODO: switch from global stream to session based stream, add devise user managment
     Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'summary', partial: 'book_summary/book_summary',
                                                locals: {book_title: @book_title, book_summary:
