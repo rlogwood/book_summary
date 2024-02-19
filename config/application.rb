@@ -23,13 +23,12 @@ module BookSummary
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # NOTE: To get PropShaft to work with the view_component gem the following solution was followed:
+    # https://github.com/rails/propshaft/issues/87#issuecomment-1127234248
     config.autoload_paths << Rails.root.join("app/frontend/components")
-    #config.autoload_paths << Rails.root.join("app/frontend/components/nav")
     config.importmap.cache_sweepers << Rails.root.join("app/frontend")
-    #config.importmap.cache_sweepers << Rails.root.join("app/frontend/nav")
     config.assets.paths << Rails.root.join("app/frontend")
-    #config.assets.paths << Rails.root.join("app/frontend/nav")
     config.view_component.view_component_path = "app/frontend/components"
-    #config.view_component.view_component_path = "app/frontend/components/nav"
   end
 end

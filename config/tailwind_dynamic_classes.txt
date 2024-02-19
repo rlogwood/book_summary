@@ -1,14 +1,9 @@
 bg-yellow-200
-text-amber-900
+font-medium
 hover:bg-gray-100
 hover:text-blue-600
-rounded-md
 px-3
 py-2
+rounded-md
+text-amber-900
 text-md
-font-medium
-text-white
-bg-yellow-200
-text-gray-900
-text-gray-300
-text-2xl

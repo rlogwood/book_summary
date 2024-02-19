@@ -2,5 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
-//import { Turbo } from "@hotwired/turbo-rails"
-//Turbo.session.drive = false
+// To disable turbo drive for debugging issues:
+// import { Turbo } from "@hotwired/turbo-rails"
+// Turbo.session.drive = false
+

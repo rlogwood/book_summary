@@ -7,7 +7,7 @@ class Nav::LinkComponent < ViewComponent::Base
   attr_reader :text, :path, :style, :attributes
 
   def self.link_styles
-    ACTIVE_STYLE
+    "#{ACTIVE_STYLE} #{INACTIVE_STYLE}".split(' ').uniq.sort.join(' ')
   end
 
   def initialize(text:, path:, inactive_style: nil, active_style: nil, **attributes)

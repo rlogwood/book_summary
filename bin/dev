@@ -1,7 +1,8 @@
 #!/usr/bin/env sh
 
-#echo "Building Tailwind safelist dynamic class file"
-#ruby ./utility/create_tailwind_safelist.rb
+# NOTE: No longer needed as of 2/18/24
+# echo "Building Tailwind safe list dynamic class file"
+# ruby ./utility/create_tailwind_safelist.rb
 
 if ! gem list foreman -i --silent; then
   echo "Installing foreman..."
