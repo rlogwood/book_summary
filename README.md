@@ -59,5 +59,5 @@
 - Allow Prompts to be created, saved and reused
 
 ### App screen shot 
-- _as of Feb 11, 2024_
+- _as of Feb 18, 2024_
 ![Book Summarizer](docs/BookSummarizerScreenShot.png)
