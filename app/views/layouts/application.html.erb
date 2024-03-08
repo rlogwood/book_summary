@@ -20,10 +20,9 @@
 <body class="bg-gray-600">
 
 <main class="mx-auto px-5 max-w-screen-lg">
-
   <%= render(Nav::BarComponent.new(
     links: [
-      #{text: 'Home', path: root_path},
+      #{ text: 'Home', path: root_path},
       { text: 'Summarize', path: request_summary_path },
       { text: 'Settings', path: settings_path }
     ],
@@ -31,7 +30,7 @@
     inactive_style: "hover:bg-gray-100 hover:text-blue-600 rounded-md px-3 py-2 text-md font-medium text-white",
     active_style: "bg-yellow-200  text-gray-900 rounded-md px-3 py-2 text-md font-medium")) %>
 
-  <div class="mt-32 text-gray-200">
+  <div class="mt-28 text-gray-200">
 
     <div class="fixed inset-0 px-4 py-10 mt-8 pointer-events-none sm:p-6 sm:items-start sm:justify-end">
       <div class="flex items-center justify-center p-5">

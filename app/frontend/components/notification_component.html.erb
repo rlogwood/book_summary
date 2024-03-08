@@ -33,8 +33,7 @@ TODO: implement action buttons
               <%= @data[:body] %>
             </p>
           <% end %>
-          <% if @data[:action].present? %>
-            <%#  TODO: implement action buttons %>
+          <% if @data[:action].present? %>            <%#  TODO: implement action buttons %>
             <div class="mt-2" data-notification-component-target="buttons">
               <a
                 <% if @data.dig(:action, :method) == 'get' %>
