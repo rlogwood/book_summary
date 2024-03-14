@@ -49,9 +49,8 @@ configuration process), it may be necessary to explicitly list those classes in 
 4. Add your OpenAPI key to the credentials
 
    >- `EDITOR=(emacs|code|vi) bin/rails credentials:edit`
-   >- Update the `openai_api_key` with your OpenAI API token
-
-   >- Alternatively define an ENV variable by the same name with the key value.
+   >- Update the `openai_access_token` with your OpenAI API token
+   >- Alternatively define an ENV variable `OPENAI_ACCESS_TOKEN` with the key value.
 
 5. bin/dev
 
