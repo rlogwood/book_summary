@@ -20,10 +20,12 @@ class BookSummaryController < ApplicationController
   # call back for summarize button
   def summarize
     return unless initialize_summary
-
-    # use ruby-openai to get summary, block will manage the chunking
-    helpers.summarize_book_with_ai(COACH_SIMPLIFIED_PROMPT, @book_title, @chatgpt_model.name,
-                                   @temperature) do |chunk, _bytesize|
+    #RubyOpenAI::BookSummarizer.name
+    RubyOpenAi::BookSummarizer.book_summary(
+      prompt: COACH_SIMPLIFIED_PROMPT,
+      book_title: @book_title, model: @chatgpt_model.name,
+      temperature: @temperature
+    ) do |chunk, _bytesize|
       delta = chunk.dig('choices', 0, 'delta', 'content') || ''
       @summary += delta
       update_summary_stream
@@ -31,7 +33,6 @@ class BookSummaryController < ApplicationController
 
     # TODO: save summaries to DB for later retrieval and sharing
     # TODO: clean up refresh_request_form
-    ### refresh_request_form - no longer needed, handled at javascript level
   rescue StandardError => e
     @summary = e.message
   end
@@ -55,7 +56,7 @@ class BookSummaryController < ApplicationController
   def update_summary_stream
     Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'summary', partial: 'book_summary/book_summary',
-                                               locals: {book_title: @book_title, book_summary:
+                                               locals: { book_title: @book_title, book_summary:
                                                  @summary, model: @chatgpt_model, temperature: @temperature })
   end
 
@@ -85,7 +86,7 @@ class BookSummaryController < ApplicationController
     Turbo::StreamsChannel.broadcast_replace_to(helpers.session_turbo_stream_id,
                                                target: 'summary',
                                                partial: 'book_summary/params_error',
-                                               locals: {messages: @messages})
+                                               locals: { messages: @messages })
 
     false
   end
