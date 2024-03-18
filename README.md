@@ -14,6 +14,9 @@
   > sudo service redis-server restart
   > ```
 
+- ViewComponent documentation https://viewcomponent.org/
+- ViewComponent github https://github.com/ViewComponent/view_component
+
 - To get PropShaft to work with the view_component gem the following solution was followed:
   https://github.com/rails/propshaft/issues/87#issuecomment-1127234248
 
